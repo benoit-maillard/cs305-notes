@@ -158,3 +158,57 @@ public class ProxyRandom implements Random {
     ...
 }
 ```
+
+## Visitor pattern
+Divisor enables pattern-matching-like behavior. It is composed of
+* Case classes: different types that need to trigger different behaviors
+  * `accept` method that forwards call to visitor
+* Visitor classes: decide what to do with the different input types
+  * `visit` method for each of the types
+
+```java
+public class Main {
+    private RandomAbstract element;
+    public void doSomething {
+        element.accept(new SomeVisitor())
+    }
+}
+```
+
+### Case classes
+```java
+public abstract class RandomAbstract {
+    public void accept(Visitor v);
+}
+
+public class Random1 extends RandomAbstract {
+    @Override
+    public void accept(Visitor v) {
+        v.accept(this);
+    }
+}
+
+public class Random2 extends RandomAbstract {
+    ...
+}
+```
+
+### Visitors
+```java
+public interface Visitor {
+    void visit(Random1 part);
+    void visit(Random2 part);
+}
+
+public class SomeVisitor implements Visitor {
+    @Override
+    public void accept(Random1 elt) {
+        ...
+    }
+
+    @Override
+    public void accept(Random2 elt) {
+        ...
+    }
+}
+```
