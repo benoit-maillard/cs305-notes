@@ -162,7 +162,7 @@ public class ProxyRandom implements Random {
 ## Visitor pattern
 Divisor enables pattern-matching-like behavior. It is composed of
 * Case classes: different types that need to trigger different behaviors
-  * `accept` method that forwards call to visitor
+  * `accept` method that forwards call to visitor (-> declares its identity to the visitor)
 * Visitor classes: decide what to do with the different input types
   * `visit` method for each of the types
 
