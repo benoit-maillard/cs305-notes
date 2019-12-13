@@ -103,6 +103,22 @@ public class RandomFactory {
 }
 ```
 
+### GoF factory method
+```java
+public class Random {
+    protected Something getSmth() {
+        return new SomethingBasic();
+    }
+}
+
+public class SubRandom extends Random {
+    @Override
+    protected Something getSmth() {
+        return new SomethingDifferent();
+    }
+}
+```
+
 ## Singleton pattern
 ### Classic version
 ```java
